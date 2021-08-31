@@ -1,0 +1,35 @@
+on: [push, pull_request, workflow_dispatch]
+
+name: Deploy to Amazon S3
+
+jobs:
+  deploy_to_prod:
+    name: Deploy to prod
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Echo
+        run: echo "Master brunch" 
+
+  deploy_to_dev:
+    name: Deploy to dev
+    if: ${{ github.ref != 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Echo
+        run: |
+         echo "dev brunch"
+
+  deploy_to_test:
+    name: Deploy to test
+    if: ${{ github.ref != 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Echo
+        run: |
+         echo "Test brunch"    
+
+
