@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Echo
         run: |
-         echo "dev brunch"
+         echo "Dev brunch"
 
   deploy_to_test:
     name: Deploy to test
